@@ -1,0 +1,16 @@
+# API framework
+fastapi>=0.111
+uvicorn[standard]>=0.29
+
+# Data & ML
+numpy>=2.1
+pandas>=2.1
+scikit-learn>=1.5
+statsmodels>=0.14.3
+
+# AI
+groq>=0.9
+
+# Utilities
+python-dotenv>=1.0
+httpx>=0.27

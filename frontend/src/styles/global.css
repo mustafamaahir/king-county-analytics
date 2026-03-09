@@ -1,0 +1,50 @@
+/* ── CSS Variables ── */
+:root {
+  --bg:        #F7F6F2;
+  --surface:   #FFFFFF;
+  --border:    #DDD9D0;
+  --border2:   #C8C4BA;
+  --blue:      #0055A4;
+  --amber:     #E87722;
+  --teal:      #007E8A;
+  --gold:      #C89B2A;
+  --slate:     #2C3240;
+  --muted:     #6B7280;
+  --light:     #EBE9E3;
+  --text:      #1A1D24;
+  --tag-bg:    #EAF0F9;
+  --font-serif: 'Libre Baskerville', serif;
+  --font-sans:  'IBM Plex Sans', sans-serif;
+  --font-mono:  'IBM Plex Mono', monospace;
+}
+
+/* ── Reset ── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* ── Typography ── */
+h1 { font-family: var(--font-serif); font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; }
+h2 { font-family: var(--font-serif); font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; }
+h3 { font-family: var(--font-sans);  font-weight: 600; }
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: var(--blue); }
+
+/* ── Utilities ── */
+.mono { font-family: var(--font-mono); }
+.muted { color: var(--muted); }
+.container { max-width: 1160px; margin: 0 auto; padding: 0 40px; }
+
+@media (max-width: 768px) {
+  .container { padding: 0 16px; }
+}
