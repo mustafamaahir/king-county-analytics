@@ -71,7 +71,7 @@ app.add_middleware(
     allow_origins=[
         "http://localhost:5173",                        # Vite dev server
         "https://*.vercel.app",                         # Vercel preview deploys
-        "https://king-county-housing.vercel.app",       # Your production URL
+        "https://king-county-analytics-ibk2.vercel.app",       # Your production URL
     ],
     allow_credentials=True,
     allow_methods=["GET"],
