@@ -10,23 +10,22 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-client = Groq(api_key=os.environ.get("GROQ_API_KEY"))
+"""
+services/groq_service.py
+Single Groq client used by all route handlers.
+"""
 
 SYSTEM_PROMPT = """You are a senior data scientist presenting findings to a 
 business audience. Write in clear, professional prose. Be specific — 
 reference the actual numbers provided. Keep responses to 3–4 sentences. 
-Never use bullet points. Never say 'certainly' or 'great question' or 'our analysis'."""
+Never use bullet points. Never say 'certainly' or 'great question'."""
 
 
 def get_interpretation(context: dict, prompt_template: str) -> str:
-    """
-    Call Groq with a context dict injected into the prompt template.
-    Returns the interpretation string or a fallback message on failure.
-    """
     prompt = prompt_template.format(**context)
     try:
         response = client.chat.completions.create(
-            model="llama-3.1-8b-instant",
+            model="llama3-8b-8192",
             messages=[
                 {"role": "system", "content": SYSTEM_PROMPT},
                 {"role": "user",   "content": prompt},
@@ -39,7 +38,6 @@ def get_interpretation(context: dict, prompt_template: str) -> str:
         return f"AI interpretation unavailable: {str(e)}"
 
 
-# ── Tab-specific prompt templates ────────────────────────────────────
 PROMPTS = {
 
     "overview": (
@@ -83,7 +81,8 @@ PROMPTS = {
     "actions": (
         "Analysis of King County housing data yields these actionable findings: "
         "Renovated properties sell for ${reno_premium:,} more than non-renovated equivalents. "
-        "ZIP code {top_undervalued_zip} is the most undervalued area (price per sqft: ${top_zip_price_psf}). "
+        "The most undervalued neighbourhood is {top_area} with a median grade of {top_area_grade} "
+        "but only ${top_area_price_psf}/sqft — well below what its quality profile implies. "
         "The 3-month price forecast is ${forecast_3m_price:,}, a change of {forecast_change_pct}% "
         "from the current median of ${current_median:,}. "
         "The primary price driver for Entry-Level properties is '{entry_top_driver}', "
