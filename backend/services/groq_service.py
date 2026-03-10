@@ -15,6 +15,8 @@ services/groq_service.py
 Single Groq client used by all route handlers.
 """
 
+client = Groq(api_key=os.environ.get("GROQ_API_KEY"))
+
 SYSTEM_PROMPT = """You are a senior data scientist presenting findings to a 
 business audience. Write in clear, professional prose. Be specific — 
 reference the actual numbers provided. Keep responses to 3–4 sentences. 
