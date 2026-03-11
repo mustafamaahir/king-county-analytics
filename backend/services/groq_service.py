@@ -20,7 +20,7 @@ client = Groq(api_key=os.environ.get("GROQ_API_KEY"))
 SYSTEM_PROMPT = """You are a senior data scientist presenting findings to a 
 business audience. Write in clear, professional prose. Be specific — 
 reference the actual numbers provided. Keep responses to 3–4 sentences. 
-Never use bullet points. Never say 'certainly' or 'great question'."""
+Never use bullet points. Never say 'certainly' or 'great question' or our analysis."""
 
 
 def get_interpretation(context: dict, prompt_template: str) -> str:
